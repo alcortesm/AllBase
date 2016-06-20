@@ -1,7 +1,11 @@
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.parse_args()
+parser.add_argument("integer",
+                    help="the number you want to show in different bases",
+                    type=int)
+args = parser.parse_args()
+print(args.integer)
 
 
 def main():
