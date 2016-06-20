@@ -15,14 +15,14 @@ TODO.
 ```
 ; python3 allbase.py 0
  0 0x0 0o000 0b0000
-; python3.4 allbase.py 1
+; python3 allbase.py 1
  1 0x1 0o001 0b0001
 ```
 
 ```
 ; python3 allbase.py 42
  42 0x2A 0o052 0b00101010
-; python3.4 allbase.py 42
+; python3 allbase.py 42
  43 0x2B 0o053 0b00101011
 ```
 
