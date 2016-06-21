@@ -1,10 +1,13 @@
 import argparse
 
-parser = argparse.ArgumentParser()
-parser.add_argument("number",
-                    help="the number you want to show in different bases",
-                    type=str)
-args = parser.parse_args()
+
+def arg_parse():
+    desc = 'Shows numbers in several bases (hex, oct...)'
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument("number",
+                        help="the number you want to show in different bases",
+                        type=str)
+    return parser.parse_args()
 
 
 def to_bases(n):
@@ -24,6 +27,7 @@ def to_bases(n):
 
 
 def main():
+    args = arg_parse()
     print(to_bases(int(args.number, 10)))
 
 
