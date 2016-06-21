@@ -1,3 +1,5 @@
+# run tests with `python3 -m unittest allbase_test`
+
 import unittest
 import allbase
 
