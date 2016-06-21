@@ -1,6 +1,6 @@
 from sys import stderr
-from allbase.args import parse
-from allbase.output_format import formats_from_sequence
+from args import parse
+from output_format import output_formats_from_str
 
 
 def to_bases(n):
@@ -25,7 +25,7 @@ def main():
         print(err, file=stderr)
         return
 
-    formats, err = formats_from_sequence(a.formats)
+    formats, err = output_formats_from_str(a.formats)
     if err is not None:
         print(err, file=stderr)
         return

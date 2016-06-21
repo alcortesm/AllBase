@@ -2,20 +2,20 @@ from enum import Enum, unique
 from collections import namedtuple
 
 
-output_format = namedtuple('FormatSpec', ['char', 'base'])
+output_format_spec = namedtuple('FormatSpec', ['char', 'base'])
 
 
 @unique
 class output_formats(Enum):
-    bin = output_format('b', 2)
-    oct = output_format('o', 8)
-    dec = output_format('d', 10)
-    hex = output_format('h', 16)
+    bin = output_format_spec('b', 2)
+    oct = output_format_spec('o', 8)
+    dec = output_format_spec('d', 10)
+    hex = output_format_spec('h', 16)
 
 
-def formats_from_sequence(sequence):
+def output_formats_from_str(s):
     l = []
-    for c in sequence:
+    for c in s:
         found = False
         for f in list(output_formats):
             if f.value.char == c:
@@ -26,5 +26,3 @@ def formats_from_sequence(sequence):
             return None, "unknown format: '{}'".format(c)
 
     return l, None
-
-
