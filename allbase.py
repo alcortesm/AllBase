@@ -4,9 +4,15 @@ import argparse
 def arg_parse():
     desc = 'Shows numbers in several bases (hex, oct...)'
     parser = argparse.ArgumentParser(description=desc)
-    parser.add_argument("number",
-                        help="the number you want to show in different bases",
+
+    parser.add_argument('number',
+                        help='the number you want to show',
                         type=str)
+    formats_help = "one or more output formats and their order. Use 'h' for" \
+                   "hex, 'd' for decimal, 'o' for octal and 'b' for binary." \
+                   " Default: 'hdob'."
+    parser.add_argument('-f', '--formats', default='dhob', help=formats_help)
+
     return parser.parse_args()
 
 
