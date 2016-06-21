@@ -11,7 +11,9 @@ def args_parse():
     formats_help = "one or more output formats and their order. Use 'h' for" \
                    "hex, 'd' for decimal, 'o' for octal and 'b' for binary." \
                    " Default: 'hdob'."
-    parser.add_argument('-f', '--formats', default='dhob', help=formats_help)
+    parser.add_argument('-f', '--formats', default='dhob',
+                        help=formats_help,
+                        type=str)
 
     return parser.parse_args()
 
