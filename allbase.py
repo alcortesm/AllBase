@@ -1,21 +1,4 @@
-import argparse
-
-
-def args_parse():
-    desc = 'Shows numbers in several bases (hex, oct...)'
-    parser = argparse.ArgumentParser(description=desc)
-
-    parser.add_argument('number',
-                        help='the number you want to show',
-                        type=str)
-    formats_help = "one or more output formats and their order. Use 'h' for" \
-                   "hex, 'd' for decimal, 'o' for octal and 'b' for binary." \
-                   " Default: 'hdob'."
-    parser.add_argument('-f', '--formats', default='dhob',
-                        help=formats_help,
-                        type=str)
-
-    return parser.parse_args()
+import args
 
 
 def to_bases(n):
@@ -35,8 +18,11 @@ def to_bases(n):
 
 
 def main():
-    args = args_parse()
-    print(to_bases(int(args.number, 10)))
+    a, ok = args.parse()
+    if not ok:
+        return
+
+    print(to_bases(int(a.number, 10)))
 
 
 if __name__ == "__main__":
