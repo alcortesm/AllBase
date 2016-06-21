@@ -25,7 +25,7 @@ Run the tests
 
 ::
 
-    ; pushd allbase ; python3 -m unittest ; popd allbase
+    ; pushd AllBase ; python3 -m unittest ; popd AllBase
 
 Examples
 --------
