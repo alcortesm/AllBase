@@ -1,4 +1,4 @@
-# run tests with `python3 -m unittest allbase_test`
+# run tests with `python3 -m unittest tests/test_allbase.py`
 
 import unittest
 import allbase
