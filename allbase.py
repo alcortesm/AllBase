@@ -1,4 +1,5 @@
-import args
+from args import parse
+from sys import stderr
 
 
 def to_bases(n):
@@ -18,8 +19,9 @@ def to_bases(n):
 
 
 def main():
-    a, ok = args.parse()
+    a, ok, err = parse()
     if not ok:
+        print(err, file=stderr)
         return
 
     print(to_bases(int(a.number, 10)))

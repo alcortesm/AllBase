@@ -1,6 +1,9 @@
 import argparse
 
 
+FORMATS = frozenset('dhob')
+
+
 def parse():
     desc = 'Shows numbers in several bases (hex, oct...)'
     parser = argparse.ArgumentParser(description=desc)
@@ -16,25 +19,26 @@ def parse():
                         type=str)
 
     args = parser.parse_args()
+    valid, reason = _is_valid(args)
 
-    return args, are_valid(args)
-
-
-def are_valid(args):
-    return is_valid_number(args.number) & is_valid_format(args.formats)
+    return args, valid, reason
 
 
-def is_valid_number(n):
-    return True
+def _is_valid(args):
+    ok, err = _is_valid_number(args.number)
+    if not ok:
+        return False, err
+
+    return _are_valid_formats(args.formats)
 
 
-FORMATS = frozenset('dhob')
+def _is_valid_number(n):
+    return True, None
 
 
-def is_valid_format(f):
+def _are_valid_formats(f):
     for c in f:
         if c not in FORMATS:
-            print("unknown format: '{}'".format(c))
-            return False
+            return False, "unknown format: '{}'".format(c)
 
-    return True
+    return True, None
