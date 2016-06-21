@@ -13,7 +13,7 @@ class output_formats(Enum):
     hex = output_format_spec('h', 16)
 
 
-def output_formats_from_str(s):
+def from_str(s):
     l = []
     for c in s:
         found = False
