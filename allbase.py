@@ -1,5 +1,7 @@
 from args import parse
 from sys import stderr
+from enum import Enum, unique
+from collections import namedtuple
 
 
 def to_bases(n):
@@ -18,9 +20,40 @@ def to_bases(n):
     return template.format(n)
 
 
+_format_spec = namedtuple('FormatSpec', ['char', 'base'])
+
+
+@unique
+class _format(Enum):
+    bin = _format_spec('b', 2)
+    oct = _format_spec('o', 8)
+    dec = _format_spec('d', 10)
+    hex = _format_spec('h', 16)
+
+
+def read_formats(formats):
+    l = []
+    for c in formats:
+        found = False
+        for f in list(_format):
+            if f.value.char == c:
+                l.append(f)
+                found = True
+                break
+        if not found:
+            return None, "unknown format: '{}'".format(c)
+
+    return l, None
+
+
 def main():
     a, ok, err = parse()
     if not ok:
+        print(err, file=stderr)
+        return
+
+    formats, err = read_formats(a.formats)
+    if err is not None:
         print(err, file=stderr)
         return
 
