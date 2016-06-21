@@ -1,6 +1,6 @@
-from args import parse
 from sys import stderr
-from output_format import formats_from_sequence
+from allbase.args import parse
+from allbase.output_format import formats_from_sequence
 
 
 def to_bases(n):

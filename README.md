@@ -10,30 +10,36 @@ sessions.  This is also a good excuse to learn Python.
 
 TODO.
 
+### Run the tests.
+
+```shell
+; python3 -m unittest
+```
+
 ## Examples
 
-```
+```shell
 ; python3 allbase.py 0
  0 0x0 0o000 0b0000
 ; python3 allbase.py 1
  1 0x1 0o001 0b0001
 ```
 
-```
+```shell
 ; python3 allbase.py 42
  42 0x2A 0o052 0b00101010
 ; python3 allbase.py 42
  43 0x2B 0o053 0b00101011
 ```
 
-```
+```shell
 ; python3 allbase.py 1234
  1234 0x04D2 0o002322 0b0000010011010010
 ; python3 allbase.py 1235
  1235 0x04D3 0o002323 0b0000010011010011
 ```
 
-```
+```shell
 ; fish
 ; for n in (seq 0 1000) ; python3 allbase.py $n; end
  0 0x0 0o000 0b0000
