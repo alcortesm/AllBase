@@ -6,7 +6,7 @@ import allbase
 
 class Test(unittest.TestCase):
 
-    def test(self):
+    def test_to_bases(self):
 
         tests = [[0, ' 0 0x0 0o000 0b0000'],
                  [1, ' 1 0x1 0o001 0b0001'],
