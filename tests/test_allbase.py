@@ -1,5 +1,5 @@
 import unittest
-from allbase.allbase import to_bases
+from allbase import tobases
 
 
 class Test(unittest.TestCase):
@@ -44,7 +44,7 @@ class Test(unittest.TestCase):
             input = tests[i][0]
             expected = tests[i][1]
 
-            obtained = to_bases(input)
+            obtained = tobases.to_bases(input)
 
             template = "subtest {0}): input={1}, expected={2!r}, obtained={3!r}"
             comment = template.format(i, input, expected, obtained)

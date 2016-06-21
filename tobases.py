@@ -1,8 +1,3 @@
-from sys import stderr
-from args import parse
-from output_format import output_formats_from_str
-
-
 def to_bases(n):
     if n < 2 ** 4:
         template = '{0:2d} 0x{0:X} 0o{0:03o} 0b{0:04b}'
@@ -17,21 +12,3 @@ def to_bases(n):
     else:
         template = '{0:d} 0x{0:X} 0o{0:o} 0b{0:b}'
     return template.format(n)
-
-
-def main():
-    a, ok, err = parse()
-    if not ok:
-        print(err, file=stderr)
-        return
-
-    formats, err = output_formats_from_str(a.formats)
-    if err is not None:
-        print(err, file=stderr)
-        return
-
-    print(to_bases(int(a.number, 10)))
-
-
-if __name__ == "__main__":
-    main()

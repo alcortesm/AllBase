@@ -10,10 +10,17 @@ sessions.  This is also a good excuse to learn Python.
 
 TODO.
 
+### Run the command
+
+```
+; python3 -m allbase 12
+12 0xC 0o014 0b1100
+```
+
 ### Run the tests.
 
 ```shell
-; python3 -m unittest
+; pushd allbase ; python3 -m unittest ; popd allbase
 ```
 
 ## Examples
