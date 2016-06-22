@@ -1,12 +1,12 @@
-.PHONY: test, coverage, clean
+.PHONY: test coverage browse-coverage clean
 
 test:
 	python3 -m unittest
 
 coverage:
-	nosetests3 --cover-erase --with-coverage --cover-branch --cover-html --cover-inclusive
+	nosetests3 --with-coverage --cover-package=allbase --cover-erase --cover-tests --cover-inclusive --cover-html --cover-branches
 
-browse-coverage:
+browse-coverage: coverage
 	xdg-open cover/index.html
 
 clean:
