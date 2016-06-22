@@ -50,35 +50,35 @@ class TestArgs(unittest.TestCase):
                 num=None,
                 bases=None,
                 valid=False,
-                reason="not a number: 'asdf'"
+                reason="need a positive integer, got 'asdf'"
             ),
             fix(
                 input=[' '],
                 num=None,
                 bases=None,
                 valid=False,
-                reason="not a number: ' '"
+                reason="need a positive integer, got ' '"
             ),
             fix(
                 input=['-12'],
                 num=None,
                 bases=None,
                 valid=False,
-                reason='negative numbers are not allowed: -12'
+                reason="need a positive integer, got '-12'"
             ),
             fix(
                 input=['12.1'],
                 num=None,
                 bases=None,
                 valid=False,
-                reason='floating point numbers are not allowed: 12.1'
+                reason="need a positive integer, got '12.1'"
             ),
             fix(
                 input=['12.0'],
                 num=None,
                 bases=None,
                 valid=False,
-                reason='floating point numbers are not allowed: 12.0'
+                reason="need a positive integer, got '12.0'"
             ),
         ]
 
