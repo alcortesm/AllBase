@@ -1,12 +1,11 @@
-from sys import stderr
 import sys
-import allbase.args
-from allbase.tobases import to_bases
+from allbase import args
+from allbase import tobases
 
-n, bases, ok, err = allbase.args.parse(sys.argv[1:])
+n, bases, ok, err = args.parse(sys.argv[1:])
 if not ok:
-    print(err, file=stderr)
+    print(err, file=sys.stderr)
     sys.exit(1)
 
-print(to_bases(int(n, 10)))
+print(tobases.to_bases(n))
 sys.exit(0)

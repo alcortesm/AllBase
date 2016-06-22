@@ -1,5 +1,6 @@
 import argparse
-import allbase.base as base
+# import base
+from allbase import base
 
 
 def parse(list_str):
@@ -13,7 +14,7 @@ def parse(list_str):
                         help='the number you want to show',
                         type=str)
     bases_help = "one or more output bases and their order. Use 'h' for" \
-        "hex, 'd' for decimal, 'o' for octal and 'b' for binary." \
+        " hex, 'd' for decimal, 'o' for octal and 'b' for binary." \
         " Default: 'hdob'."
     parser.add_argument('-b', '--bases', default='dhob',
                         help=bases_help,
