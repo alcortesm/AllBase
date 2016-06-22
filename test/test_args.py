@@ -66,6 +66,20 @@ class TestArgs(unittest.TestCase):
                 valid=False,
                 reason='negative numbers are not allowed: -12'
             ),
+            fix(
+                input=['12.1'],
+                num=None,
+                bases=None,
+                valid=False,
+                reason='floating point numbers are not allowed: 12.1'
+            ),
+            fix(
+                input=['12.0'],
+                num=None,
+                bases=None,
+                valid=False,
+                reason='floating point numbers are not allowed: 12.0'
+            ),
         ]
 
         for i, t in enumerate(tests):
