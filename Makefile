@@ -6,6 +6,9 @@ test:
 coverage:
 	nosetests3 --cover-erase --with-coverage --cover-branch --cover-html --cover-inclusive
 
+browse-coverage:
+	xdg-open cover/index.html
+
 clean:
 	- rm -rf allbase.egg-info/
 	- rm -rf build/
