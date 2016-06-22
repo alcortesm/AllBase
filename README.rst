@@ -1,3 +1,6 @@
+.. image:: https://codecov.io/gh/alcortesm/AllBase/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/alcortesm/AllBase
+
 Allbase
 =======
 
