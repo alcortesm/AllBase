@@ -1,4 +1,4 @@
-.PHONY: test coverage browse-coverage clean
+.PHONY: test coverage browse-coverage install clean
 
 test:
 	python3 -m unittest
@@ -8,6 +8,9 @@ coverage:
 
 browse-coverage: coverage
 	xdg-open cover/index.html
+
+install:
+	python3 setup.py install --user
 
 clean:
 	- rm -rf allbase.egg-info/
