@@ -19,12 +19,36 @@ Installation
 
 TODO.
 
-Run the tests
--------------
+Tests
+-----
 
-::
+Run the test with:::
 
-    ; pushd AllBase ; python3 -m unittest ; popd
+    ; make test
+    python3 -m unittest
+    ....
+    ----------------------------------------------------------------------
+    Ran 4 tests in 0.004s
+    
+    OK
+
+
+Check code coverage with:::
+
+   nosetests3 --with-coverage --cover-package=allbase --cover-erase --cover-tests --cover-inclusive --cover-html --cover-branches
+    ....
+    Name             Stmts   Miss Branch BrMiss  Cover   Missing
+    ------------------------------------------------------------
+    allbase              0      0      0      0   100%   
+    allbase.args        27      1      8      1    94%   34
+    allbase.base        28      0     16      0   100%   
+    allbase.tobase       3      0      2      0   100%   
+    ------------------------------------------------------------
+    TOTAL               58      1     26      1    98%   
+    ----------------------------------------------------------------------
+    Ran 4 tests in 0.019s
+    
+    OK
 
 Examples
 --------
@@ -33,7 +57,9 @@ Examples
 
     ; python3 -m allbase 42
     42 0x2a 0o52 0b101010
-    ;
+
+::
+
     ; python3 -m allbase -h
     usage: __main__.py [-h] [-b BASES] number
     
@@ -48,10 +74,14 @@ Examples
                             one or more output bases and their order. Use 'h' for
                             hex, 'd' for decimal, 'o' for octal and 'b' for
                             binary. Default: 'dhob'.
-    ;
+
+::
+
     ; python3 -m allbase 42 -b d
     42
-    ;
+
+::
+
     ; python3 -m allbase 42 -b booh
     0b101010 0o52 0o52 0x2a
 
