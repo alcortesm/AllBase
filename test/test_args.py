@@ -78,7 +78,7 @@ class TestArgs(unittest.TestCase):
                 num=None,
                 bases=None,
                 valid=False,
-                reason="need a positive integer, got '12.1'"
+                reason="need a positive integer, got '12.0'"
             ),
         ]
 
