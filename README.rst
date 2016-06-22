@@ -47,7 +47,7 @@ Examples
       -b BASES, --bases BASES
                             one or more output bases and their order. Use 'h' for
                             hex, 'd' for decimal, 'o' for octal and 'b' for
-                            binary. Default: 'hdob'.
+                            binary. Default: 'dhob'.
     ;
     ; python3 -m allbase 42 -b d
     42
