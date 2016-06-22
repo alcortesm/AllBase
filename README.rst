@@ -1,5 +1,7 @@
+.. image:: https://travis-ci.org/alcortesm/AllBase.svg?branch=master
+    :target: https://travis-ci.org/alcortesm/AllBase
 .. image:: https://codecov.io/gh/alcortesm/AllBase/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/alcortesm/AllBase
+    :target: https://codecov.io/gh/alcortesm/AllBase
 
 Allbase
 =======
