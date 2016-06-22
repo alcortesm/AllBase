@@ -1,12 +1,12 @@
 import unittest
-from allbase import tobases
+from allbase import tobase
 from allbase import base
 from collections import namedtuple
 
 
-class TestAllBase(unittest.TestCase):
+class TestToBase(unittest.TestCase):
 
-    def test_to_bases(self):
+    def test_to_base(self):
 
         fix = namedtuple('fix', 'n bases expected')
         tests = [
@@ -79,7 +79,7 @@ class TestAllBase(unittest.TestCase):
         ]
 
         for i, t in enumerate(tests):
-            obtained = tobases.to_bases(t.n, t.bases)
+            obtained = tobase.do(t.n, t.bases)
 
             template = "subtest {0}):\n" \
                 "\tn={1}\n" \
