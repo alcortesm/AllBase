@@ -35,7 +35,8 @@ Run the test with:::
 
 Check code coverage with:::
 
-   nosetests3 --with-coverage --cover-package=allbase --cover-erase --cover-tests --cover-inclusive --cover-html --cover-branches
+    ; make coverage
+    nosetests3 --with-coverage --cover-package=allbase --cover-erase --cover-tests --cover-inclusive --cover-html --cover-branches
     ....
     Name             Stmts   Miss Branch BrMiss  Cover   Missing
     ------------------------------------------------------------
