@@ -22,6 +22,9 @@ def parse(list_str):
     namespace = parser.parse_args(list_str)
     valid, reason = _is_valid(namespace)
 
+    if not valid:
+        return None, None, False, reason
+
     num = int(namespace.number)
     bases, ok = base.from_str_list(namespace.bases)
 
@@ -36,9 +39,14 @@ def _is_valid(args):
     return _are_valid_bases(args.bases)
 
 
-# TODO
-def _is_valid_number(n):
-    return True, None
+def _is_valid_number(s):
+    try:
+        n = int(s)
+        if n < 0:
+            raise ValueError
+        return True, None
+    except ValueError:
+        return False, "need a positive integer, got '{}'".format(s)
 
 
 def _are_valid_bases(bases):
