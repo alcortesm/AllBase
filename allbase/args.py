@@ -1,5 +1,4 @@
 import argparse
-# import base
 from allbase import base
 
 
@@ -7,7 +6,7 @@ def parse(list_str):
     if len(list_str) == 0:
         return None, None, False, 'no input arguments'
 
-    desc = 'Shows numbers in several bases (hex, oct...)'
+    desc = 'Shows numbers in several bases (hex, oct...).'
     parser = argparse.ArgumentParser(description=desc)
 
     parser.add_argument('number',
@@ -37,6 +36,7 @@ def _is_valid(args):
     return _are_valid_bases(args.bases)
 
 
+# TODO
 def _is_valid_number(n):
     return True, None
 
