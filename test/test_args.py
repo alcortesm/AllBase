@@ -40,7 +40,7 @@ class TestArgs(unittest.TestCase):
             ),
             fix(
                 input=['12', '-b', 'doaob'],
-                num=12,
+                num=None,
                 bases=None,
                 valid=False,
                 reason="unknown base: 'a'",
@@ -78,7 +78,7 @@ class TestArgs(unittest.TestCase):
                 num=None,
                 bases=None,
                 valid=False,
-                reason="need a positive integer, got '12.0'"
+                reason="need a positive integer, got '12.1'"
             ),
         ]
 
