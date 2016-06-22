@@ -7,7 +7,7 @@ install:
     - pip install codecov
 
 script:
-    - nosetests --with-coverage --cover-inclusive
+    - nosetests --with-coverage --cover-inclusive --cover-branches
 
 branches:
     only:
