@@ -7,46 +7,46 @@ class TestOutputFormat(unittest.TestCase):
 
     def test_from_str(self):
 
-        fix = namedtuple('fix', 'input exp_formats exp_err')
+        fix = namedtuple('fix', 'input bases err')
         tests = [
             fix(input="",
-                exp_formats=[],
-                exp_err=None),
+                bases=[],
+                err=None),
             fix(input="a",
-                exp_formats=None,
-                exp_err="unknown format: 'a'"),
+                bases=None,
+                err="unknown base: 'a'"),
             fix(input="d",
-                exp_formats=[base.Bases.dec],
-                exp_err=None),
+                bases=[base.Bases.dec],
+                err=None),
             fix(input="h",
-                exp_formats=[base.Bases.hex],
-                exp_err=None),
+                bases=[base.Bases.hex],
+                err=None),
             fix(input="o",
-                exp_formats=[base.Bases.oct],
-                exp_err=None),
+                bases=[base.Bases.oct],
+                err=None),
             fix(input="b",
-                exp_formats=[base.Bases.bin],
-                exp_err=None),
+                bases=[base.Bases.bin],
+                err=None),
             fix(input="dd",
-                exp_formats=[base.Bases.dec,
+                bases=[base.Bases.dec,
                              base.Bases.dec],
-                exp_err=None),
+                err=None),
             fix(input="do",
-                exp_formats=[base.Bases.dec,
+                bases=[base.Bases.dec,
                              base.Bases.oct],
-                exp_err=None),
+                err=None),
             fix(input="od",
-                exp_formats=[base.Bases.oct,
+                bases=[base.Bases.oct,
                              base.Bases.dec],
-                exp_err=None),
+                err=None),
             fix(input="hdob",
-                exp_formats=[base.Bases.hex,
+                bases=[base.Bases.hex,
                              base.Bases.dec,
                              base.Bases.oct,
                              base.Bases.bin],
-                exp_err=None),
+                err=None),
             fix(input="hodbhhdoddb",
-                exp_formats=[base.Bases.hex,
+                bases=[base.Bases.hex,
                              base.Bases.oct,
                              base.Bases.dec,
                              base.Bases.bin,
@@ -57,24 +57,24 @@ class TestOutputFormat(unittest.TestCase):
                              base.Bases.dec,
                              base.Bases.dec,
                              base.Bases.bin],
-                exp_err=None),
+                err=None),
             fix(input="hodbhhadoddb",
-                exp_formats=None,
-                exp_err="unknown format: 'a'"),
+                bases=None,
+                err="unknown base: 'a'"),
         ]
 
         for i, t in enumerate(tests):
-            formats, err = base.from_str(t.input)
+            bases, err = base.from_str_list(t.input)
 
             template = "subtest {0}):\n\tinput={1!r}\n\t"\
-                "expected formats={2}\n\tobtained formats={3}\n\t"\
-                "expected error={4!r}\n\tobtained error={5!r}"
+                "bases\n\t\texpected={2}\n\t\tobtained={3}\n\t"\
+                "error\n\t\texpected={4!r}\n\t\tobtained={5!r}"
             comment = template.format(i, t.input,
-                                      t.exp_formats, formats,
-                                      t.exp_err, err)
-            self.assertEqual(formats, t.exp_formats, comment)
-            self.assertEqual(err, t.exp_err, comment)
+                                      t.bases, bases,
+                                      t.err, err)
+            self.assertEqual(bases, t.bases, comment)
+            self.assertEqual(err, t.err, comment)
 
-    def test_Bases_str(self):
+    def test_Base_repr(self):
         for b in list(base.Bases):
-            self.assertEqual(str(b), b.value.str)
+            self.assertEqual(repr(b.value), b.value.repr)

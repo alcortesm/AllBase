@@ -1,27 +1,31 @@
 import argparse
+import allbase.base as base
 
 
-FORMATS = frozenset('dhob')
+def parse(list_str):
+    if len(list_str) == 0:
+        return None, None, False, 'no input arguments'
 
-
-def parse():
     desc = 'Shows numbers in several bases (hex, oct...)'
     parser = argparse.ArgumentParser(description=desc)
 
     parser.add_argument('number',
                         help='the number you want to show',
                         type=str)
-    formats_help = "one or more output formats and their order. Use 'h' for" \
-                   "hex, 'd' for decimal, 'o' for octal and 'b' for binary." \
-                   " Default: 'hdob'."
-    parser.add_argument('-f', '--formats', default='dhob',
-                        help=formats_help,
+    bases_help = "one or more output bases and their order. Use 'h' for" \
+        "hex, 'd' for decimal, 'o' for octal and 'b' for binary." \
+        " Default: 'hdob'."
+    parser.add_argument('-b', '--bases', default='dhob',
+                        help=bases_help,
                         type=str)
 
-    args = parser.parse_args()
-    valid, reason = _is_valid(args)
+    namespace = parser.parse_args(list_str)
+    valid, reason = _is_valid(namespace)
 
-    return args, valid, reason
+    num = int(namespace.number)
+    bases, ok = base.from_str_list(namespace.bases)
+
+    return num, bases, valid, reason
 
 
 def _is_valid(args):
@@ -29,16 +33,16 @@ def _is_valid(args):
     if not ok:
         return False, err
 
-    return _are_valid_formats(args.formats)
+    return _are_valid_bases(args.bases)
 
 
 def _is_valid_number(n):
     return True, None
 
 
-def _are_valid_formats(f):
-    for c in f:
-        if c not in FORMATS:
-            return False, "unknown format: '{}'".format(c)
+def _are_valid_bases(bases):
+    for c in bases:
+        if c not in [b.value.char for b in list(base.Bases)]:
+            return False, "unknown base: '{}'".format(c)
 
     return True, None

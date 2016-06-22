@@ -1,19 +1,12 @@
 from sys import stderr
 import sys
-from allbase import args
-from allbase import output_format
-from allbase import tobases
+import allbase.args
+from allbase.tobases import to_bases
 
-
-a, ok, err = args.parse()
+n, bases, ok, err = allbase.args.parse(sys.argv[1:])
 if not ok:
     print(err, file=stderr)
     sys.exit(1)
 
-formats, err = output_format.from_str(a.formats)
-if err is not None:
-    print(err, file=stderr)
-    sys.exit(1)
-
-print(tobases.to_bases(int(a.number, 10)))
+print(to_bases(int(n, 10)))
 sys.exit(0)
