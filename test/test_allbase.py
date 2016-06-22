@@ -2,7 +2,7 @@ import unittest
 from allbase import tobases
 
 
-class Test(unittest.TestCase):
+class TestAllBase(unittest.TestCase):
 
     def test_to_bases(self):
 
