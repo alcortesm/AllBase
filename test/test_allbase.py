@@ -1,52 +1,92 @@
 import unittest
 from allbase import tobases
+from allbase import base
+from collections import namedtuple
 
 
 class TestAllBase(unittest.TestCase):
 
     def test_to_bases(self):
 
-        tests = [[0, ' 0 0x0 0o000 0b0000'],
-                 [1, ' 1 0x1 0o001 0b0001'],
-                 [2, ' 2 0x2 0o002 0b0010'],
-                 [3, ' 3 0x3 0o003 0b0011'],
-                 [4, ' 4 0x4 0o004 0b0100'],
-                 [5, ' 5 0x5 0o005 0b0101'],
-                 [6, ' 6 0x6 0o006 0b0110'],
-                 [7, ' 7 0x7 0o007 0b0111'],
-                 [8, ' 8 0x8 0o010 0b1000'],
-                 [9, ' 9 0x9 0o011 0b1001'],
-                 [10, '10 0xA 0o012 0b1010'],
-                 [11, '11 0xB 0o013 0b1011'],
-                 [12, '12 0xC 0o014 0b1100'],
-                 [13, '13 0xD 0o015 0b1101'],
-                 [14, '14 0xE 0o016 0b1110'],
-                 [(2**4)-1, '15 0xF 0o017 0b1111'],
-                 [2**4, ' 16 0x10 0o020 0b00010000'],
-                 [(2**8)-1, '255 0xFF 0o377 0b11111111'],
-                 [2**8, '  256 0x0100 0o000400 0b0000000100000000'],
-                 [(2**16)-1, '65535 0xFFFF 0o177777 0b1111111111111111'],
-                 [2**16, '     65536 0x00010000 0o000000200000 \
-0b00000000000000010000000000000000'],
-                 [(2**32)-1, '4294967295 0xFFFFFFFF 0o037777777777 \
-0b11111111111111111111111111111111'],
-                 [2**32, '          4294967296 0x0000000100000000 \
-0o000000000000040000000000 \
-0b0000000000000000000000000000000100000000000000000000000000000000'],
-                 [(2**64)-1, '18446744073709551615 0xFFFFFFFFFFFFFFFF \
-0o001777777777777777777777 \
-0b1111111111111111111111111111111111111111111111111111111111111111'],
-                 [2**64, '18446744073709551616 0x10000000000000000 \
-0o2000000000000000000000 \
-0b10000000000000000000000000000000000000000000000000000000000000000']]
+        fix = namedtuple('fix', 'n bases expected')
+        tests = [
+            fix(0, [base.Bases.dec.value], '0'),
+            fix(1, [base.Bases.dec.value], '1'),
+            fix(2, [base.Bases.dec.value], '2'),
+            fix(7, [base.Bases.dec.value], '7'),
+            fix(8, [base.Bases.dec.value], '8'),
+            fix(15, [base.Bases.dec.value], '15'),
+            fix(16, [base.Bases.dec.value], '16'),
+            fix(255, [base.Bases.dec.value], '255'),
+            fix(256, [base.Bases.dec.value], '256'),
+            fix((2**16)-1, [base.Bases.dec.value], '65535'),
+            fix(2**16, [base.Bases.dec.value], '65536'),
+            fix((2**32)-1, [base.Bases.dec.value], '4294967295'),
+            fix(2**32, [base.Bases.dec.value], '4294967296'),
+            fix((2**64)-1, [base.Bases.dec.value], '18446744073709551615'),
+            fix(2**64, [base.Bases.dec.value], '18446744073709551616'),
+            #
+            fix(0, [base.Bases.bin.value], '0b0'),
+            fix(1, [base.Bases.bin.value], '0b1'),
+            fix(2, [base.Bases.bin.value], '0b10'),
+            fix(7, [base.Bases.bin.value], '0b111'),
+            fix(8, [base.Bases.bin.value], '0b1000'),
+            fix(15, [base.Bases.bin.value], '0b1111'),
+            fix(16, [base.Bases.bin.value], '0b10000'),
+            fix(255, [base.Bases.bin.value], '0b11111111'),
+            fix(256, [base.Bases.bin.value], '0b100000000'),
+            fix((2**16)-1, [base.Bases.bin.value], '0b1111111111111111'),
+            fix(2**16, [base.Bases.bin.value], '0b10000000000000000'),
+            #
+            fix(0, [base.Bases.oct.value], '0o0'),
+            fix(1, [base.Bases.oct.value], '0o1'),
+            fix(2, [base.Bases.oct.value], '0o2'),
+            fix(7, [base.Bases.oct.value], '0o7'),
+            fix(8, [base.Bases.oct.value], '0o10'),
+            fix(15, [base.Bases.oct.value], '0o17'),
+            fix(16, [base.Bases.oct.value], '0o20'),
+            fix(255, [base.Bases.oct.value], '0o377'),
+            fix(256, [base.Bases.oct.value], '0o400'),
+            fix((2**16)-1, [base.Bases.oct.value], '0o177777'),
+            fix(2**16, [base.Bases.oct.value], '0o200000'),
+            #
+            fix(0, [base.Bases.hex.value], '0x0'),
+            fix(1, [base.Bases.hex.value], '0x1'),
+            fix(2, [base.Bases.hex.value], '0x2'),
+            fix(7, [base.Bases.hex.value], '0x7'),
+            fix(8, [base.Bases.hex.value], '0x8'),
+            fix(15, [base.Bases.hex.value], '0xf'),
+            fix(16, [base.Bases.hex.value], '0x10'),
+            fix(255, [base.Bases.hex.value], '0xff'),
+            fix(256, [base.Bases.hex.value], '0x100'),
+            fix((2**16)-1, [base.Bases.hex.value], '0xffff'),
+            fix(2**16, [base.Bases.hex.value], '0x10000'),
+            fix((2**32)-1, [base.Bases.hex.value], '0xffffffff'),
+            fix(2**32, [base.Bases.hex.value], '0x100000000'),
+            fix((2**64)-1, [base.Bases.hex.value], '0xffffffffffffffff'),
+            fix(2**64, [base.Bases.hex.value], '0x10000000000000000'),
+            #
+            fix(
+                42,
+                [
+                    base.Bases.dec.value,
+                    base.Bases.hex.value,
+                    base.Bases.dec.value,
+                    base.Bases.bin.value
+                ],
+                '42 0x2a 42 0b101010'
+            )
+        ]
 
-        for i in range(len(tests)):
-            input = tests[i][0]
-            expected = tests[i][1]
+        for i, t in enumerate(tests):
+            obtained = tobases.to_bases(t.n, t.bases)
 
-            obtained = tobases.to_bases(input)
+            template = "subtest {0}):\n" \
+                "\tn={1}\n" \
+                "\tbases={2}\n" \
+                "\tstr:\n" \
+                "\t\texpected={3!r}\n" \
+                "\t\tobtained={4!r}\n"
+            comment = template.format(i, t.n, t.bases, t.expected, obtained)
 
-            template = "subtest {0}): input={1}, expected={2!r}, obtained={3!r}"
-            comment = template.format(i, input, expected, obtained)
-
-            self.assertEqual(obtained, expected, comment)
+            self.assertEqual(obtained, t.expected, comment)

@@ -3,27 +3,31 @@ from enum import Enum, unique
 
 class Base():
 
-    def __init__(self, char, base, repr):
+    def __init__(self, char, base, repr, to_str_fn):
         self.char = char
         self.base = base
         self.repr = repr
+        self.to_str_fn = to_str_fn
 
     def __repr__(self):
         return self.repr
 
+    def to_str(self, n):
+        return self.to_str_fn(n)
+
 
 @unique
 class Bases(Enum):
-    bin = Base('b', 2, 'BIN')
-    oct = Base('o', 8, 'OCT')
-    dec = Base('d', 10, 'DEC')
-    hex = Base('h', 16, 'HEX')
+    bin = Base('b', 2, 'BIN', lambda n: "0b{0:b}".format(n))
+    oct = Base('o', 8, 'OCT', lambda n: "0o{0:o}".format(n))
+    dec = Base('d', 10, 'DEC', lambda n: "{0:d}".format(n))
+    hex = Base('h', 16, 'HEX', lambda n: "0x{0:x}".format(n))
 
 
 def from_char(char):
     for b in list(Bases):
         if b.value.char == char:
-            return b
+            return b.value
 
     return None
 

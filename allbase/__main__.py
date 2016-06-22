@@ -7,5 +7,5 @@ if not ok:
     print(err, file=sys.stderr)
     sys.exit(1)
 
-print(tobases.to_bases(n))
+print(tobases.to_bases(n, bases))
 sys.exit(0)

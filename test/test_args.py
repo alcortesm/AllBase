@@ -20,21 +20,23 @@ class TestArgs(unittest.TestCase):
             fix(
                 input=['12'],
                 num=12,
-                bases=[Bases.dec, Bases.hex, Bases.oct, Bases.bin],
+                bases=[Bases.dec.value, Bases.hex.value, Bases.oct.value,
+                       Bases.bin.value],
                 valid=True,
                 reason=None
             ),
             fix(
                 input=['12', '-b', 'd'],
                 num=12,
-                bases=[Bases.dec],
+                bases=[Bases.dec.value],
                 valid=True,
                 reason=None
             ),
             fix(
                 input=['12', '-b', 'doob'],
                 num=12,
-                bases=[Bases.dec, Bases.oct, Bases.oct, Bases.bin],
+                bases=[Bases.dec.value, Bases.oct.value, Bases.oct.value,
+                       Bases.bin.value],
                 valid=True,
                 reason=None
             ),
