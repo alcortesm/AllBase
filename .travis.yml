@@ -1,10 +1,17 @@
 language: python
+
 python:
-    - "3.2"
-    - "3.3"
     - "3.4"
-# command to install dependencies
-script: nosetests
+
+install:
+    - pip install codecov
+
+script:
+    - nosetests
+
 branches:
     only:
         - master
+
+after_success:
+    - codecov
