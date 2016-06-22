@@ -45,6 +45,27 @@ class TestArgs(unittest.TestCase):
                 valid=False,
                 reason="unknown base: 'a'",
             ),
+            fix(
+                input=['asdf'],
+                num=None,
+                bases=None,
+                valid=False,
+                reason="not a number: 'asdf'"
+            ),
+            fix(
+                input=[' '],
+                num=None,
+                bases=None,
+                valid=False,
+                reason="not a number: ' '"
+            ),
+            fix(
+                input=['-12'],
+                num=None,
+                bases=None,
+                valid=False,
+                reason='negative numbers are not allowed: -12'
+            ),
         ]
 
         for i, t in enumerate(tests):
