@@ -1,7 +1,7 @@
 import unittest
 import allbase.args as args
 from collections import namedtuple
-from allbase.base import Bases
+import allbase.base as base
 
 
 class TestArgs(unittest.TestCase):
@@ -20,23 +20,21 @@ class TestArgs(unittest.TestCase):
             fix(
                 input=['12'],
                 num=12,
-                bases=[Bases.dec.value, Bases.hex.value, Bases.oct.value,
-                       Bases.bin.value],
+                bases=[base.dec, base.hex, base.oct, base.bin],
                 valid=True,
                 reason=None
             ),
             fix(
                 input=['12', '-b', 'd'],
                 num=12,
-                bases=[Bases.dec.value],
+                bases=[base.dec],
                 valid=True,
                 reason=None
             ),
             fix(
                 input=['12', '-b', 'doob'],
                 num=12,
-                bases=[Bases.dec.value, Bases.oct.value, Bases.oct.value,
-                       Bases.bin.value],
+                bases=[base.dec, base.oct, base.oct, base.bin],
                 valid=True,
                 reason=None
             ),

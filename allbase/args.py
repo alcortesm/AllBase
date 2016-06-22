@@ -43,7 +43,7 @@ def _is_valid_number(n):
 
 def _are_valid_bases(bases):
     for c in bases:
-        if c not in [b.value.char for b in list(base.Bases)]:
+        if base.from_char(c) is None:
             return False, "unknown base: '{}'".format(c)
 
     return True, None

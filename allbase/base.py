@@ -1,6 +1,3 @@
-from enum import Enum, unique
-
-
 class Base():
 
     def __init__(self, char, base, repr, to_str_fn):
@@ -16,18 +13,17 @@ class Base():
         return self.to_str_fn(n)
 
 
-@unique
-class Bases(Enum):
-    bin = Base('b', 2, 'BIN', lambda n: "0b{0:b}".format(n))
-    oct = Base('o', 8, 'OCT', lambda n: "0o{0:o}".format(n))
-    dec = Base('d', 10, 'DEC', lambda n: "{0:d}".format(n))
-    hex = Base('h', 16, 'HEX', lambda n: "0x{0:x}".format(n))
+bin = Base('b', 2, 'BIN', lambda n: "0b{0:b}".format(n))
+oct = Base('o', 8, 'OCT', lambda n: "0o{0:o}".format(n))
+dec = Base('d', 10, 'DEC', lambda n: "{0:d}".format(n))
+hex = Base('h', 16, 'HEX', lambda n: "0x{0:x}".format(n))
+all = frozenset([dec, hex, oct, bin])
 
 
 def from_char(char):
-    for b in list(Bases):
-        if b.value.char == char:
-            return b.value
+    for b in all:
+        if b.char == char:
+            return b
 
     return None
 
