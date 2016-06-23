@@ -3,14 +3,14 @@
 .. image:: https://codecov.io/gh/alcortesm/AllBase/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/alcortesm/AllBase
 
-Allbase
+AllBase
 =======
 
-Allbase is a python 3 script to show numbers in different bases (binary, octal,
+AllBase is a python 3 script to show numbers in different bases (binary, octal,
 decimal and hexadecimal).
 
 Its main purpose is to be used as a quick CLI command to help during hacking
-sessions.  This is also a good excuse to learn Python.
+sessions.  This is also a good excuse for me to learn Python.
 
 Here is an example of use:
 
@@ -59,35 +59,19 @@ Check code coverage with:::
 Examples
 --------
 
+The `-b` optional argument allows you to select the order and format of
+the output using a string with the followin characters: `h` for
+hexadecimal, `d` for decimal, `o` for octal and `b` for binary.  If the
+`-b` argument is not present the default format is `dhob`:
+
 ::
 
     ; python3 -m allbase 42
     42 0x2a 0o52 0b101010
-
-::
-
-    ; python3 -m allbase -h
-    usage: __main__.py [-h] [-b BASES] number
-    
-    Shows numbers in several bases (hex, oct...)
-    
-    positional arguments:
-      number                the number you want to show
-    
-    optional arguments:
-      -h, --help            show this help message and exit
-      -b BASES, --bases BASES
-                            one or more output bases and their order. Use 'h' for
-                            hex, 'd' for decimal, 'o' for octal and 'b' for
-                            binary. Default: 'dhob'.
-
-::
-
     ; python3 -m allbase 42 -b d
     42
-
-::
-
+    ; python3 -m allbase 42 -b o
+    0o52
     ; python3 -m allbase 42 -b booh
     0b101010 0o52 0o52 0x2a
 
