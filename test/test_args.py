@@ -1,5 +1,4 @@
 import unittest
-import sys
 import allbase.args as args
 from collections import namedtuple
 import allbase.base as base
@@ -147,10 +146,7 @@ class TestArgs(unittest.TestCase):
         ]
 
         for i, t in enumerate(tests):
-            original_stderr = sys.stderr
-            sys.stderr = None
             nums, bases, valid, reason = args.parse(t.input)
-            sys.stderr = original_stderr
 
             template = "subtest {0}):\n\tinput = {1!r}\n\t"\
                 "nums\n\t\texpected={2}\n\t\tobtained={3}\n\t"\
