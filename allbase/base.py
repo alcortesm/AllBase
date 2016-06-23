@@ -1,7 +1,6 @@
 class Base():
 
-    def __init__(self, char, base, repr, to_str_fn):
-        self.char = char
+    def __init__(self, base, repr, to_str_fn):
         self.base = base
         self.repr = repr
         self.to_str_fn = to_str_fn
@@ -13,17 +12,21 @@ class Base():
         return self.to_str_fn(n)
 
 
-bin = Base('b', 2, 'BIN', lambda n: "0b{0:b}".format(n))
-oct = Base('o', 8, 'OCT', lambda n: "0o{0:o}".format(n))
-dec = Base('d', 10, 'DEC', lambda n: "{0:d}".format(n))
-hex = Base('h', 16, 'HEX', lambda n: "0x{0:x}".format(n))
-all = frozenset([dec, hex, oct, bin])
+bin = Base(2, 'BIN', lambda n: "0b{0:b}".format(n))
+oct = Base(8, 'OCT', lambda n: "0o{0:o}".format(n))
+dec = Base(10, 'DEC', lambda n: "{0:d}".format(n))
+hex = Base(16, 'HEX', lambda n: "0x{0:x}".format(n))
+all = {
+    'd': dec,
+    'h': hex,
+    'o': oct,
+    'b': bin
+}
 
 
 def from_char(char):
-    for b in all:
-        if b.char == char:
-            return b
+    if char in all:
+        return all[char]
 
     return None
 
