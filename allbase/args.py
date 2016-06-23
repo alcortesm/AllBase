@@ -2,16 +2,23 @@ import argparse
 from allbase import base
 
 
+class _ArgumentParser(argparse.ArgumentParser):
+
+        def error(self, message):
+            raise argparse.ArgumentError(None, message)
+
+
 def parse(list_str):
     if len(list_str) == 0:
         return None, None, False, 'no input arguments'
 
     desc = 'Shows numbers in several bases (hex, oct...).'
-    parser = argparse.ArgumentParser(description=desc)
+    parser = _ArgumentParser(description=desc)
 
-    parser.add_argument('number',
-                        help='the number you want to show',
-                        type=str)
+    parser.add_argument('numbers', metavar='N',
+                        type=int,
+                        nargs='+',
+                        help='the numbers you want to show')
     bases_help = "one or more output bases and their order. Use 'h' for" \
         " hex, 'd' for decimal, 'o' for octal and 'b' for binary." \
         " Default: 'hdob'."
@@ -19,34 +26,34 @@ def parse(list_str):
                         help=bases_help,
                         type=str)
 
-    namespace = parser.parse_args(list_str)
-    valid, reason = _is_valid(namespace)
+    try:
+        namespace = parser.parse_args(list_str)
+    except argparse.ArgumentError as e:
+        return None, None, False, e.args[1]
 
+    valid, reason = _is_valid(namespace)
     if not valid:
         return None, None, False, reason
 
-    num = int(namespace.number)
     bases, ok = base.from_str_list(namespace.bases)
 
-    return num, bases, valid, reason
+    return namespace.numbers, bases, valid, reason
 
 
 def _is_valid(args):
-    ok, err = _is_valid_number(args.number)
+    ok, err = _are_valid_numbers(args.numbers)
     if not ok:
         return False, err
 
     return _are_valid_bases(args.bases)
 
 
-def _is_valid_number(s):
-    try:
-        n = int(s)
+def _are_valid_numbers(nums):
+    for n in nums:
         if n < 0:
-            raise ValueError
-        return True, None
-    except ValueError:
-        return False, "need a positive integer, got '{}'".format(s)
+            return False, "need positive integers, got '{}'".format(n)
+
+    return True, None
 
 
 def _are_valid_bases(bases):

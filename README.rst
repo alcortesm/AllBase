@@ -76,6 +76,20 @@ hexadecimal, `d` for decimal, `o` for octal and `b` for binary.  If the
     0b101010 0o52 0o52 0x2a
 
 
+You can also ask for several numbers at once:
+
+::
+
+    ; python3 -m allbase 42 43 255
+    42 0x2a 0o52 0b101010
+    43 0x2b 0o53 0b101011
+    255 0xff 0o377 0b11111111
+    ; python3 -m allbase 42 43 255 -b db
+    42 0b101010
+    43 0b101011
+    255 0b11111111
+
+
 Authors
 -------
 
