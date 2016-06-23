@@ -19,21 +19,21 @@ class TestArgs(unittest.TestCase):
             ),
             fix(
                 input=['12'],
-                num=12,
+                num=[12],
                 bases=[base.dec, base.hex, base.oct, base.bin],
                 valid=True,
                 reason=None
             ),
             fix(
                 input=['12', '-b', 'd'],
-                num=12,
+                num=[12],
                 bases=[base.dec],
                 valid=True,
                 reason=None
             ),
             fix(
                 input=['12', '-b', 'doob'],
-                num=12,
+                num=[12],
                 bases=[base.dec, base.oct, base.oct, base.bin],
                 valid=True,
                 reason=None
@@ -79,6 +79,48 @@ class TestArgs(unittest.TestCase):
                 bases=None,
                 valid=False,
                 reason="need a positive integer, got '12.0'"
+            ),
+            fix(
+                input=['0', '1'],
+                num=[0, 1],
+                bases=[base.dec, base.hex, base.oct, base.bin],
+                valid=True,
+                reason=None
+            ),
+            fix(
+                input=['0', '255'],
+                num=[0, 255],
+                bases=[base.dec, base.hex, base.oct, base.bin],
+                valid=True,
+                reason=None
+            ),
+            fix(
+                input=['0', '255', '65536'],
+                num=[0, 255, 65536],
+                bases=[base.dec, base.hex, base.oct, base.bin],
+                valid=True,
+                reason=None
+            ),
+            fix(
+                input=['15', '255', '65535', '-b', 'hd'],
+                num=[0, 255, 65536],
+                bases=[base.hex, base.dec],
+                valid=True,
+                reason=None
+            ),
+            fix(
+                input=['15', '255', '65535', '-b', 'bo', '1'],
+                num=[0, 255, 65536, 1],
+                bases=[base.bin, base.oct],
+                valid=True,
+                reason=None
+            ),
+            fix(
+                input=['-b', 'bo', '15', '255'],
+                num=[0, 255, 65536, 1],
+                bases=[base.bin, base.oct],
+                valid=True,
+                reason=None
             ),
         ]
 
