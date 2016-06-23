@@ -1,21 +1,24 @@
 class Base():
 
-    def __init__(self, base, repr, to_str_fn):
+    def __init__(self, base, repr, prefix, to_str_fn):
         self.base = base
         self.repr = repr
+        self.prefix = prefix
         self.to_str_fn = to_str_fn
 
     def __repr__(self):
         return self.repr
 
-    def to_str(self, n):
-        return self.to_str_fn(n)
+    def to_str(self, n, sz):
+        return self.prefix + self.to_str_fn(n, sz)
 
+    def size(self, n):  # how long will the string be for number n?
+        return len(self.to_str_fn(n, 0))
 
-bin = Base(2, 'BIN', lambda n: "0b{0:b}".format(n))
-oct = Base(8, 'OCT', lambda n: "0o{0:o}".format(n))
-dec = Base(10, 'DEC', lambda n: "{0:d}".format(n))
-hex = Base(16, 'HEX', lambda n: "0x{0:x}".format(n))
+bin = Base(2, 'BIN', '0b', lambda n, sz: '{0:0{1}b}'.format(n, sz))
+oct = Base(8, 'OCT', '0o', lambda n, sz: '{0:0{1}o}'.format(n, sz))
+dec = Base(10, 'DEC', '', lambda n, sz: '{0:{1}d}'.format(n, sz))
+hex = Base(16, 'HEX', '0x', lambda n, sz: '{0:0{1}x}'.format(n, sz))
 all = {
     'd': dec,
     'h': hex,

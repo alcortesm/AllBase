@@ -78,19 +78,19 @@ class TestToBase(unittest.TestCase):
             ),
             fix(
                 [15, 255, 65535], [base.dec],
-                ['15', '255', '65535']
+                ['   15', '  255', '65535']
             ),
             fix(
                 [15, 255, 65535], [base.hex],
-                ['0xf', '0xff', '0xffff']
+                ['0x000f', '0x00ff', '0xffff']
             ),
             fix(
                 [15, 255, 65535], [base.dec, base.hex],
-                ['15 0xf', '255 0xff', '65535 0xffff']
+                ['   15 0x000f', '  255 0x00ff', '65535 0xffff']
             ),
             fix(
                 [15, 255, 65535], [base.hex, base.dec],
-                ['0xf 15', '0xff 255', '0xffff 65535']
+                ['0x000f    15', '0x00ff   255', '0xffff 65535']
             )
         ]
 
