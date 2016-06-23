@@ -7,7 +7,8 @@ if not ok:
     print(err, file=sys.stderr)
     sys.exit(1)
 
-result = tobase.do(nums, bases)
+results = tobase.do(nums, bases)
+for r in results:
+    print(r)
 
-print(result)
 sys.exit(0)
