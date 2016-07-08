@@ -16,7 +16,7 @@ def parse(list_str):
     parser = _ArgumentParser(description=desc)
 
     parser.add_argument('numbers', metavar='N',
-                        type=number_from_str,
+                        type=_number_from_str,
                         nargs='+',
                         help='the numbers you want to show')
     formats_help = "one or more output format and their order. Use 'd' for" \
@@ -40,8 +40,19 @@ def parse(list_str):
     return namespace.numbers, bases, valid, reason
 
 
-def number_from_str(s):
-    return int(s)
+_format_base = {
+    '0x': 16,
+    '0X': 16,
+    '0o': 8,
+    '0O': 8,
+    '0b': 2,
+    '0B': 2,
+}
+
+
+def _number_from_str(s):
+    base = _format_base.get(s[:2], 10)
+    return int(s, base)
 
 
 def _is_valid(args):
