@@ -31,7 +31,7 @@ characters:
 - **o** for octal
 - **b** for binary.
 
-If the "-b" argument is not present the default format is **dhob**:
+If the "-f" argument is not present the default format is **dhob**.
 
 ::
 
