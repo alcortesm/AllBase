@@ -45,7 +45,7 @@ If the "-f" argument is not present the default format is **dhob**.
     42 0x2a 0o52 0b101010
 
 
-You can also ask for several numbers at once, the columns will align nicely:
+If you provide several numbers at once, the columns will align nicely:
 
 ::
 
