@@ -12,20 +12,25 @@ decimal and hexadecimal).
 Its main purpose is to be used as a quick CLI command to help during hacking
 sessions.  This is also a good excuse for me to learn Python.
 
-Here is an example of use:
+Examples
+--------
+
+Here is how to print 42 in decimal, hexadecimal, octal and binary:
 
 ::
 
     ; python3 -m allbase 42
     42 0x2a 0o52 0b101010
 
-Examples
---------
-
 The `-b` optional argument allows you to select the order and format of
-the output using a string with the followin characters: `h` for
-hexadecimal, `d` for decimal, `o` for octal and `b` for binary.  If the
-`-b` argument is not present the default format is `dhob`:
+the output using a string with the followin characters:
+
+- `h` for hexadecimal
+- `d` for decimal
+- `o` for octal
+- `b` for binary.
+
+If the `-b` argument is not present the default format is `dhob`:
 
 ::
 
@@ -57,7 +62,9 @@ TODO.
 Tests
 -----
 
-Run the test with:::
+Run the test with:
+
+::
 
     ; make test
     python3 -m unittest
@@ -68,7 +75,9 @@ Run the test with:::
     OK
 
 
-Check code coverage with:::
+Check code coverage with:
+
+::
 
     ; make coverage 
     nosetests3 --with-coverage --cover-package=allbase --cover-erase --cover-tests --cover-inclusive --cover-html --cover-branches
