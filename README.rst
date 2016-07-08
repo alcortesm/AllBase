@@ -22,15 +22,15 @@ Here is how to print 42 in decimal, hexadecimal, octal and binary:
     ; python3 -m allbase 42
     42 0x2a 0o52 0b101010
 
-The `-b` optional argument allows you to select the order and format of
+The **-b** optional argument allows you to select the order and format of
 the output using a string with the followin characters:
 
-- `h` for hexadecimal
-- `d` for decimal
-- `o` for octal
-- `b` for binary.
+- **d** for decimal
+- **h** for hexadecimal
+- **o** for octal
+- **b** for binary.
 
-If the `-b` argument is not present the default format is `dhob`:
+If the "-b" argument is not present the default format is **dhob**:
 
 ::
 
