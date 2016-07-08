@@ -57,6 +57,18 @@ You can also ask for several numbers at once, the columns will align nicely:
     1 0o1 0b1
 
 
+You can also input numbers in other bases as well: decimal, hexdecimal, octal
+and binary are supported:
+
+::
+
+    ; python3 -m allbase 10 0x10 0o10 0b10
+    10 0x0a 0o12 0b01010
+    16 0x10 0o20 0b10000
+     8 0x08 0o10 0b01000
+     2 0x02 0o02 0b00010
+
+
 Installation
 ------------
 
