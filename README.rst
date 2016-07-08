@@ -12,8 +12,8 @@ decimal and hexadecimal).
 Its main purpose is to be used as a quick CLI command to help during hacking
 sessions.  This is also a good excuse for me to learn Python.
 
-Examples
---------
+Usage
+-----
 
 Here is how to print 42 in decimal, hexadecimal, octal and binary:
 
