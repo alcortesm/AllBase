@@ -53,6 +53,8 @@ You can also ask for several numbers at once, the columns will align nicely:
       1 0o001 0b00000001
       7 0o007 0b00000111
     248 0o370 0b11111000
+    ; python3 -m allbase -f dob 1
+    1 0o1 0b1
 
 
 Installation
