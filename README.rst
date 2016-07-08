@@ -41,6 +41,8 @@ If the "-f" argument is not present the default format is **dhob**.
     0o52
     ; python3 -m allbase 42 -f booh
     0b101010 0o52 0o52 0x2a
+    ; python3 -m allbase 42
+    42 0x2a 0o52 0b101010
 
 
 You can also ask for several numbers at once, the columns will align nicely:
