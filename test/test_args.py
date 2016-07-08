@@ -25,28 +25,28 @@ class TestArgs(unittest.TestCase):
                 reason=None
             ),
             fix(
-                input=['12', '-b', 'd'],
+                input=['12', '-f', 'd'],
                 nums=[12],
                 bases=[base.dec],
                 valid=True,
                 reason=None
             ),
             fix(
-                input=['-b', 'd', '12'],
+                input=['-f', 'd', '12'],
                 nums=[12],
                 bases=[base.dec],
                 valid=True,
                 reason=None
             ),
             fix(
-                input=['12', '-b', 'doob'],
+                input=['12', '-f', 'doob'],
                 nums=[12],
                 bases=[base.dec, base.oct, base.oct, base.bin],
                 valid=True,
                 reason=None
             ),
             fix(
-                input=['12', '-b', 'doaob'],
+                input=['12', '-f', 'doaob'],
                 nums=None,
                 bases=None,
                 valid=False,
@@ -109,28 +109,28 @@ class TestArgs(unittest.TestCase):
                 reason=None
             ),
             fix(
-                input=['15', '255', '65535', '-b', 'hd'],
+                input=['15', '255', '65535', '-f', 'hd'],
                 nums=[15, 255, 65535],
                 bases=[base.hex, base.dec],
                 valid=True,
                 reason=None
             ),
             fix(
-                input=['-b', 'hd', '15', '255', '65535'],
+                input=['-f', 'hd', '15', '255', '65535'],
                 nums=[15, 255, 65535],
                 bases=[base.hex, base.dec],
                 valid=True,
                 reason=None
             ),
             fix(
-                input=['15', '255', '65535', '-b', 'bo', '1'],
+                input=['15', '255', '65535', '-f', 'bo', '1'],
                 nums=None,
                 bases=None,
                 valid=False,
                 reason='unrecognized arguments: 1'
             ),
             fix(
-                input=['-b', 'bo', '15', '255'],
+                input=['-f', 'bo', '15', '255'],
                 nums=[15, 255],
                 bases=[base.bin, base.oct],
                 valid=True,

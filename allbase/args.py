@@ -19,11 +19,11 @@ def parse(list_str):
                         type=int,
                         nargs='+',
                         help='the numbers you want to show')
-    bases_help = "one or more output bases and their order. Use 'h' for" \
-        " hex, 'd' for decimal, 'o' for octal and 'b' for binary." \
-        " Default: 'hdob'."
-    parser.add_argument('-b', '--bases', default='dhob',
-                        help=bases_help,
+    formats_help = "one or more output format and their order. Use 'd' for" \
+        " decimal, 'h' for hex, 'o' for octal and 'b' for binary." \
+        " Default: 'dhob'."
+    parser.add_argument('-f', '--formats', default='dhob',
+                        help=formats_help,
                         type=str)
 
     try:
@@ -35,7 +35,7 @@ def parse(list_str):
     if not valid:
         return None, None, False, reason
 
-    bases, ok = base.from_str_list(namespace.bases)
+    bases, ok = base.from_str_list(namespace.formats)
 
     return namespace.numbers, bases, valid, reason
 
@@ -45,7 +45,7 @@ def _is_valid(args):
     if not ok:
         return False, err
 
-    return _are_valid_bases(args.bases)
+    return _are_valid_bases(args.formats)
 
 
 def _are_valid_numbers(nums):
