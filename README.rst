@@ -19,6 +19,36 @@ Here is an example of use:
     ; python3 -m allbase 42
     42 0x2a 0o52 0b101010
 
+Examples
+--------
+
+The `-b` optional argument allows you to select the order and format of
+the output using a string with the followin characters: `h` for
+hexadecimal, `d` for decimal, `o` for octal and `b` for binary.  If the
+`-b` argument is not present the default format is `dhob`:
+
+::
+
+    ; python3 -m allbase 42
+    42 0x2a 0o52 0b101010
+    ; python3 -m allbase 42 -b d
+    42
+    ; python3 -m allbase 42 -b o
+    0o52
+    ; python3 -m allbase 42 -b booh
+    0b101010 0o52 0o52 0x2a
+
+
+You can also ask for several numbers at once, the columns will align nicely:
+
+::
+
+    ; python3 -m allbase -b dob 1 7 248
+      1 0o001 0b00000001
+      7 0o007 0b00000111
+    248 0o370 0b11111000
+
+
 Installation
 ------------
 
@@ -55,36 +85,6 @@ Check code coverage with:::
     Ran 4 tests in 0.028s
     
     OK
-
-Examples
---------
-
-The `-b` optional argument allows you to select the order and format of
-the output using a string with the followin characters: `h` for
-hexadecimal, `d` for decimal, `o` for octal and `b` for binary.  If the
-`-b` argument is not present the default format is `dhob`:
-
-::
-
-    ; python3 -m allbase 42
-    42 0x2a 0o52 0b101010
-    ; python3 -m allbase 42 -b d
-    42
-    ; python3 -m allbase 42 -b o
-    0o52
-    ; python3 -m allbase 42 -b booh
-    0b101010 0o52 0o52 0x2a
-
-
-You can also ask for several numbers at once, the columns will align nicely:
-
-::
-
-    ; python3 -m allbase -b dob 1 7 248
-      1 0o001 0b00000001
-      7 0o007 0b00000111
-    248 0o370 0b11111000
-
 
 Authors
 -------
