@@ -57,14 +57,14 @@ class TestArgs(unittest.TestCase):
                 nums=None,
                 bases=None,
                 valid=False,
-                reason="argument N: invalid int value: 'asdf'"
+                reason="argument N: invalid number_from_str value: 'asdf'"
             ),
             fix(
                 input=[' '],
                 nums=None,
                 bases=None,
                 valid=False,
-                reason="argument N: invalid int value: ' '"
+                reason="argument N: invalid number_from_str value: ' '"
             ),
             fix(
                 input=['-12'],
@@ -78,14 +78,14 @@ class TestArgs(unittest.TestCase):
                 nums=None,
                 bases=None,
                 valid=False,
-                reason="argument N: invalid int value: '12.1'"
+                reason="argument N: invalid number_from_str value: '12.1'"
             ),
             fix(
                 input=['12.0'],
                 nums=None,
                 bases=None,
                 valid=False,
-                reason="argument N: invalid int value: '12.0'"
+                reason="argument N: invalid number_from_str value: '12.0'"
             ),
             fix(
                 input=['0', '1'],
@@ -141,7 +141,7 @@ class TestArgs(unittest.TestCase):
                 nums=None,
                 bases=None,
                 valid=False,
-                reason="argument N: invalid int value: '12.0'"
+                reason="argument N: invalid number_from_str value: '12.0'"
             ),
         ]
 

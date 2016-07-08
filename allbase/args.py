@@ -16,7 +16,7 @@ def parse(list_str):
     parser = _ArgumentParser(description=desc)
 
     parser.add_argument('numbers', metavar='N',
-                        type=int,
+                        type=number_from_str,
                         nargs='+',
                         help='the numbers you want to show')
     formats_help = "one or more output format and their order. Use 'd' for" \
@@ -38,6 +38,10 @@ def parse(list_str):
     bases, ok = base.from_str_list(namespace.formats)
 
     return namespace.numbers, bases, valid, reason
+
+
+def number_from_str(s):
+    return int(s)
 
 
 def _is_valid(args):
